@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<style>
+
+			fieldset { border: none; }
+
+			fieldset#InputFields {
+				background: #ccc;
+				padding: 0.5em;
+			}
+
+			fieldset#OutputFields {
+				clear: left;
+				background: #cfc;
+				padding: 0.5em;
+			}
+
+			fieldset#Labels {
+				padding: 0;
+				text-align: center;
+			}
+
+			textarea {
+				width: 100%;
+				height: 20em;
+			}
+
+			label#InputLabel {
+				float: left;
+				background: #ccc;
+				padding: 0.25em 1em;
+			}
+
+			label#OutputLabel {
+				float: right;
+				background: #cfc;
+				padding: 0.25em 1em;
+			}
+
+			div#OutputLink {
+				display: none;
+				font-size: 0.9em;
+			}
+
+		</style>
+
+		<script src="http://files.zarate.org/js/bookmarkleter.js"></script>
+
+
+		<title>Bookmarkleter</title>
+
+	</head>
+
+	<body>
+
+		<header>
+			<h2>Bookmarkleter</h2>
+		</header>
+
+		
+
+		<p>You have JavaScript. You need a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a>. This does that.</p>
+
+		<h3>Features</h3>
+
+		<ul>
+
+			<li>Removes newlines, tabs, optional spaces, and comments</li>
+			<li>URL-encodes special ASCII characters: [space], %, &quot;, &lt;, &gt;, #, @, &amp;, ?</li>
+			<li>Places code in a wrapper function (if not done already)</li>
+			<li>Does not hex-encode non-ASCII characters (you should probably use <a href="http://www.w3schools.com/jsref/jsref_fromcharcode.asp">String.fromCharCode</a> for that)</li>
+
+		</ul>
+
+		<h3>Use it</h3>
+
+		<form onsubmit="MakeBM(); return false;" action="">
+
+			<fieldset id="InputFields">
+				<textarea id="Input"></textarea>
+			</fieldset>
+
+			<fieldset id="Labels">
+				<label id="InputLabel" for="Input">JavaScript</label>
+				<label id="OutputLabel" for="Output">Bookmarklet</label>
+				<input type="submit" value="Convert to bookmarklet">
+			</fieldset>
+
+			<fieldset id="OutputFields">
+				<textarea id="Output" wrap="hard"></textarea>
+				<div id="OutputLink"><a id="OutputHref" href="#">Link</a></div>
+			</fieldset>
+		
+		</form>
+
+	</body>
+
+</html>
