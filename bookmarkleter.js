@@ -32,9 +32,11 @@ App.config(function($compileProvider) {
 
 App.factory('wrapJQuery', function() {
 	return function(code) {
-		return 'var s=document.createElement("script");'+
+		return  'var __hasjq=function(){'+code+'};'+
+		        'if(window.jQuery) return __hasjq();'+
+		        'var s=document.createElement("script");'+
 						's.src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js";'+
-						's.onload=function(){'+code+'};'+
+						's.onload=__hasjq;'+
 						'document.body.appendChild(s);'
 	};
 });
