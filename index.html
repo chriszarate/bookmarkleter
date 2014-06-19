@@ -11,7 +11,7 @@
 
 			body {
 
-				width:   35em;
+				width:   80%;
 				margin:  3em;
 
 				background: #fff;
@@ -47,6 +47,8 @@
 			textarea {
 				width: 100%;
 				height: 20em;
+				font-family: Courier;
+				font-size: .7em;
 			}
 
 			label#InputLabel {
@@ -62,14 +64,22 @@
 			}
 
 			div#OutputLink {
-				display: none;
 				font-size: 0.9em;
 			}
 
 			span.hilite { background: #ff6; }
 
+			.pointer {
+				cursor: pointer;
+			}
+
+			.error {
+				color: red;
+			}
+
 		</style>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 		<script src="bookmarkleter.js"></script>
 
 
@@ -100,21 +110,28 @@
 
 		<h3>Use it</h3>
 
-		<form onsubmit="MakeBM(); return false;" action="">
+		<form onsubmit="return false;" ng-app="bookmarkleter">
+
+			<fieldset>
+				<label class="pointer" for="reqjq">Requires jQuery</label>
+				<input class="pointer" type="checkbox" id="reqjq"
+					ng-model="requiresJQuery" ng-change="updateBookmarklet()"></input>
+				<br>
+				<label class="error" ng-show="error">{{ error }}</label>
+			</fieldset>
 
 			<fieldset id="InputFields">
-				<textarea id="Input"></textarea>
+				<textarea ng-model="input" id="Input" ng-change="updateBookmarklet()"></textarea>
 			</fieldset>
 
 			<fieldset id="Labels">
 				<label id="InputLabel" for="Input">JavaScript</label>
 				<label id="OutputLabel" for="Output">Bookmarklet</label>
-				<input type="submit" value="Convert to bookmarklet">
 			</fieldset>
 
 			<fieldset id="OutputFields">
-				<textarea id="Output" wrap="hard"></textarea>
-				<div id="OutputLink"><a id="OutputHref" href="#">Link</a></div>
+				<textarea ng-bind="output" id="Output" wrap="hard" readonly></textarea>
+				<div id="OutputLink">Drag this <a id="OutputHref" ng-href="{{ output }}">link</a> to your bookmarks bar</div>
 			</fieldset>
 
 		</form>
