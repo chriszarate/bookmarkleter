@@ -1,0 +1,32 @@
+{
+  "name": "bookmarkleter",
+  "version": "0.1.0",
+  "description": "You have JavaScript. You need a bookmarklet. This does that.",
+  "main": "bookmarkleter.js",
+  "scripts": {
+    "test": "nodeunit tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chriszarate/bookmarkleter.git"
+  },
+  "author": "Chris Zarate",
+  "license": "Public Domain",
+  "bugs": {
+    "url": "https://github.com/chriszarate/bookmarkleter/issues"
+  },
+  "homepage": "https://github.com/chriszarate/bookmarkleter",
+  "devDependencies": {
+    "angular": "^1.2.18",
+    "gulp": "^3.8.1",
+    "gulp-browserify": "^0.5.0",
+    "gulp-clean": "^0.3.0",
+    "gulp-jshint": "^1.6.3",
+    "gulp-ngmin": "^0.3.0",
+    "gulp-uglify": "^0.3.1",
+    "nodeunit": "^0.8.8"
+  },
+  "dependencies": {
+    "uglify-js": "^2.4.14"
+  }
+}
