@@ -10,71 +10,98 @@
 		<style>
 
 			body {
-
-				width:   80%;
-				margin:  3em;
-
+				width: 80%;
+				margin: 3em;
 				background: #fff;
-
 				font-family: Arvo, Helvetica, sans-serif;
-				font-size:   1.5em;
+				font-size: 1.5em;
 				line-height: 1.5em;
-
 			}
 
-			h1, h2, h3, h4 { margin: 2em 0 1em 0; }
+			h1, h2, h3, h4 {
+				margin: 2em 0 1em 0;
+			}
 
-			form { margin: 0 0 3em 0; }
+			h4 {
+				margin: 0 0 0.5em 0;
+			}
 
-			fieldset { border: none; }
+			form {
+				margin: 0 0 3em 0;
+			}
 
-			fieldset#InputFields {
+			fieldset {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+
+			textarea {
+				width: 100%;
+				height: 15em;
+				font-family: monospace;
+				font-size: .7em;
+			}
+
+			input[type=checkbox] {
+				vertical-align: middle;
+			}
+
+			#InputFields {
 				background: #ccc;
 				padding: 0.5em;
 			}
 
-			fieldset#OutputFields {
+			#OutputFields {
 				clear: left;
 				background: #cfc;
 				padding: 0.5em;
 			}
 
-			fieldset#Labels {
+			#Labels {
 				padding: 0;
-				text-align: center;
 			}
 
-			textarea {
-				width: 100%;
-				height: 20em;
-				font-family: Courier;
-				font-size: .7em;
-			}
-
-			label#InputLabel {
+			#InputLabel {
 				float: left;
 				background: #ccc;
-				padding: 0.25em 1em;
+				padding: 0.25em 0.5em;
 			}
 
-			label#OutputLabel {
+			#OutputLabel {
 				float: right;
 				background: #cfc;
-				padding: 0.25em 1em;
+				padding: 0.25em 0.5em;
 			}
 
-			div#OutputLink {
+			#OutputLink {
 				font-size: 0.9em;
 			}
 
-			span.hilite { background: #ff6; }
+			#ErrorOutput {
+				overflow: hidden;
+				padding: 0.25em 0.5em;
+				text-align: center;
+				background-color: #fcc;
+				color: #f00;
+			}
+
+			.options {
+				margin: 2em 0;
+				padding: 1em;
+				border: solid 1px #ccc;
+			}
+
+			.hilite {
+				background-color: #ff6;
+			}
 
 			.pointer {
 				cursor: pointer;
 			}
 
-			.error {
-				color: red;
+			.disabled {
+				color: #9c9;
 			}
 
 		</style>
@@ -108,14 +135,6 @@
 
 		<form onsubmit="return false;" ng-app="bookmarkleter">
 
-			<fieldset>
-				<label class="pointer" for="reqjq">Requires jQuery</label>
-				<input class="pointer" type="checkbox" id="reqjq"
-					ng-model="requiresJQuery" ng-change="updateBookmarklet()"></input>
-				<br>
-				<label class="error" ng-show="error">{{ error }}</label>
-			</fieldset>
-
 			<fieldset id="InputFields">
 				<textarea ng-model="input" id="Input" ng-change="updateBookmarklet()"></textarea>
 			</fieldset>
@@ -123,12 +142,24 @@
 			<fieldset id="Labels">
 				<label id="InputLabel" for="Input">JavaScript</label>
 				<label id="OutputLabel" for="Output">Bookmarklet</label>
+				<div id="ErrorOutput" ng-show="error">{{ error }}</div>
 			</fieldset>
 
 			<fieldset id="OutputFields">
 				<textarea ng-bind="output" id="Output" wrap="hard" readonly></textarea>
-				<div id="OutputLink">Drag this <a id="OutputHref" ng-href="{{ output }}">link</a> to your bookmarks bar</div>
+				<div id="OutputLink" class="disabled">Drag this link to your bookmarks bar: <a id="OutputHref" ng-href="{{ output }}">My Bookmarklet</a></div>
 			</fieldset>
+
+			<div class="options">
+
+				<h4>Options</h4>
+
+				<fieldset>
+					<input class="pointer" type="checkbox" id="reqjq" ng-model="requiresJQuery" ng-change="updateBookmarklet()"></input>
+					<label class="pointer" for="reqjq">Requires jQuery</label>
+				</fieldset>
+
+			</div>
 
 		</form>
 
