@@ -27,14 +27,13 @@ var bookmarkleter = function (code, options) {
     's.onload = __hasjq;' +
     'document.body.appendChild(s);';
   }
-  console.log(code);
 
   // Parse and uglify code.
   var minifiedCode = uglify.minify(code, options.uglify).code;
 
   // If code uglifies down to nothing, stop processing.
   if (!minifiedCode) return;
-  console.log(minifiedCode);
+
   // URI-encode special characters.
   specialCharacters.forEach(function (char) {
     var charRegex = new RegExp(char, 'g');
