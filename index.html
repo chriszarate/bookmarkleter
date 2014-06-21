@@ -98,12 +98,10 @@
 		<h3>Features</h3>
 
 		<ul>
-
-			<li>Removes newlines, tabs, optional spaces, and <span class="hilite">comments</span></li>
+			<li>Validates and minifies code using <span class="hilite"><a href="https://github.com/mishoo/UglifyJS">UglifyJS</a></span></li>
 			<li>URL-encodes special ASCII characters: [space], %, &quot;, &lt;, &gt;, #, @, &amp;, ?</li>
-			<li>Places code in a wrapper function (if not done already)</li>
-			<li>Does not hex-encode non-ASCII characters (you should probably use <a href="http://www.w3schools.com/jsref/jsref_fromcharcode.asp">String.fromCharCode</a> for that)</li>
-
+			<li>Places code in an anonymous wrapper function (if not done already)</li>
+			<li>Optionally injects <a href="http://jquery.com">jQuery</a></li>
 		</ul>
 
 		<h3>Use it</h3>
