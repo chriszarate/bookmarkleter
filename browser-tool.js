@@ -20,6 +20,7 @@ App.run(function($rootScope) {
       $rootScope.error = null;
     } catch(err) {
       $rootScope.error = err.message;
+      $rootScope.output = null;
       return;
     }
 
