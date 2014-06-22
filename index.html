@@ -147,7 +147,7 @@
 
 			<fieldset id="OutputFields">
 				<textarea ng-bind="output" id="Output" wrap="hard" readonly></textarea>
-				<div id="OutputLink" class="disabled">Drag this link to your bookmarks bar: <a id="OutputHref" ng-attr-href="{{ output }}">My Bookmarklet</a></div>
+				<div id="OutputLink" ng-class="output ? '' : 'disabled'">Drag this link to your bookmarks bar: <a id="OutputHref" ng-attr-href="{{ output }}">My Bookmarklet</a></div>
 			</fieldset>
 
 			<div class="options">
