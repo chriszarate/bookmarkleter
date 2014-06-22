@@ -2,22 +2,28 @@
 
 [![Build Status][build-status]][travis-ci]
 
-You have JavaScript. You need a [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). This does that.
+You have JavaScript. You need a [bookmarklet][bookmarklet]. This does that.
+
+**http://chriszarate.github.io/bookmarkleter**
 
 ### Features
 
-* Removes newlines, tabs, optional spaces, and comments
+* Validates and minifies code using [UglifyJS][uglify]
 * URL-encodes special ASCII characters: \[space\], %, ", <, >, #, @, &, ?
-* Places code in a wrapper function (if not done already)
-* Does not hex-encode non-ASCII characters (you should probably use [String.fromCharCode](http://www.w3schools.com/jsref/jsref_fromcharcode.asp) for that)
-
-### Use it
-
-Please visit **<a href="http://chriszarate.github.io/bookmarkleter">http://chriszarate.github.io/bookmarkleter</a>**.
+* Optionally injects [jQuery][jquery]
 
 ### License
 
 This is free software. It is released to the public domain without warranty.
 
+### Thanks
+
+Thanks to [@jpillora][jpillora] for updates and contributions.
+
+
 [build-status]: https://secure.travis-ci.org/chriszarate/bookmarkleter.svg?branch=master
 [travis-ci]: http://travis-ci.org/chriszarate/bookmarkleter
+[bookmarklet]: http://en.wikipedia.org/wiki/Bookmarklet
+[uglify]: https://github.com/mishoo/UglifyJS
+[jquery]: http://jquery.com
+[jpillora]: https://github.com/jpillora
