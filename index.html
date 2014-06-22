@@ -92,16 +92,17 @@
 				border: solid 1px #ccc;
 			}
 
-			.hilite {
-				background-color: #ff6;
+			.disabled {
+				color: #9c9;
+			}
+
+			.disabled a {
+				color: #9c9;
+				cursor: default;
 			}
 
 			.pointer {
 				cursor: pointer;
-			}
-
-			.disabled {
-				color: #9c9;
 			}
 
 		</style>
@@ -125,7 +126,7 @@
 		<h3>Features</h3>
 
 		<ul>
-			<li>Validates and minifies code using <span class="hilite"><a href="https://github.com/mishoo/UglifyJS">UglifyJS</a></span></li>
+			<li>Validates and minifies code using <a href="https://github.com/mishoo/UglifyJS">UglifyJS</a></li>
 			<li>URL-encodes special ASCII characters: [space], %, &quot;, &lt;, &gt;, #, @, &amp;, ?</li>
 			<li>Optionally injects <a href="http://jquery.com">jQuery</a></li>
 		</ul>
