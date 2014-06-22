@@ -4,7 +4,7 @@
   "description": "You have JavaScript. You need a bookmarklet. This does that.",
   "main": "bookmarkleter.js",
   "scripts": {
-    "test": "nodeunit tests"
+    "test": "nodeunit test"
   },
   "repository": {
     "type": "git",
