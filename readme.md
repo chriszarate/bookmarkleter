@@ -1,5 +1,7 @@
 # Bookmarkleter
 
+[![Build Status][build-status]][travis-ci]
+
 You have JavaScript. You need a [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet). This does that.
 
 ### Features
@@ -16,3 +18,6 @@ Please visit **<a href="http://chriszarate.github.io/bookmarkleter">http://chris
 ### License
 
 This is free software. It is released to the public domain without warranty.
+
+[build-status]: https://secure.travis-ci.org/chriszarate/bookmarkleter.svg?branch=master
+[travis-ci]: http://travis-ci.org/chriszarate/bookmarkleter
