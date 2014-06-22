@@ -23,7 +23,7 @@ App.run(function($rootScope) {
       uglify: {
         mangle: $rootScope.mangleVars
       }
-    }
+    };
 
     // Make a bookmarklet and show to user. Capture parse errors.
     try {
