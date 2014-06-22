@@ -8,15 +8,26 @@ var App = angular.module('bookmarkleter', []);
 
 App.run(function($rootScope) {
 
+  $rootScope.anonymize = true;
+  $rootScope.mangleVars = true;
+
   $rootScope.updateBookmarklet = function() {
 
     var code = $rootScope.input;
 
     if(!code) return;
 
+    var bookmarkletOptions = {
+      anonymize: $rootScope.anonymize,
+      jQuery: $rootScope.requiresJQuery,
+      uglify: {
+        mangle: $rootScope.mangleVars
+      }
+    }
+
     // Make a bookmarklet and show to user. Capture parse errors.
     try {
-    	$rootScope.output = bookmarkleter(code, {jQuery: $rootScope.requiresJQuery});
+      $rootScope.output = bookmarkleter(code, bookmarkletOptions);
       $rootScope.error = null;
     } catch(err) {
       $rootScope.error = err.message;

@@ -28,6 +28,11 @@ var bookmarkleter = function (code, options) {
     'document.body.appendChild(s);';
   }
 
+  // Add anonymous function wrapper, if requested.
+  if (options.anonymize) {
+    code = '(function(){' + code + '})()';
+  }
+
   // Parse and uglify code.
   var minifiedCode = uglify.minify(code, options.uglify).code;
 
@@ -39,11 +44,6 @@ var bookmarkleter = function (code, options) {
     var charRegex = new RegExp(char, 'g');
     minifiedCode = minifiedCode.replace(charRegex, encodeURI(char));
   });
-
-  // Add anonymous function wrapper, if not already present.
-  if ( (minifiedCode.substring(0, 12) + minifiedCode.substr(-3)) !== '!function(){}()' ) {
-    minifiedCode = 'function(){' + minifiedCode + '}()';
-  }
 
   // Add javascript prefix.
   minifiedCode = 'javascript:' + minifiedCode;

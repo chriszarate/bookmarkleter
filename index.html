@@ -127,7 +127,6 @@
 		<ul>
 			<li>Validates and minifies code using <span class="hilite"><a href="https://github.com/mishoo/UglifyJS">UglifyJS</a></span></li>
 			<li>URL-encodes special ASCII characters: [space], %, &quot;, &lt;, &gt;, #, @, &amp;, ?</li>
-			<li>Places code in an anonymous wrapper function (if not done already)</li>
 			<li>Optionally injects <a href="http://jquery.com">jQuery</a></li>
 		</ul>
 
@@ -147,12 +146,22 @@
 
 			<fieldset id="OutputFields">
 				<textarea ng-bind="output" id="Output" wrap="hard" readonly></textarea>
-				<div id="OutputLink" class="disabled">Drag this link to your bookmarks bar: <a id="OutputHref" ng-href="{{ output }}">My Bookmarklet</a></div>
+				<div id="OutputLink" class="disabled">Drag this link to your bookmarks bar: <a id="OutputHref" ng-attr-href="{{ output }}">My Bookmarklet</a></div>
 			</fieldset>
 
 			<div class="options">
 
 				<h4>Options</h4>
+
+				<fieldset>
+					<input class="pointer" type="checkbox" id="anonymize" ng-model="anonymize" ng-change="updateBookmarklet()"></input>
+					<label class="pointer" for="anonymize">Place code in an anonymous wrapper function</label>
+				</fieldset>
+
+				<fieldset>
+					<input class="pointer" type="checkbox" id="mangle" ng-model="mangleVars" ng-change="updateBookmarklet()"></input>
+					<label class="pointer" for="mangle">Mangle variable names (using UglifyJS) to save space</label>
+				</fieldset>
 
 				<fieldset>
 					<input class="pointer" type="checkbox" id="reqjq" ng-model="requiresJQuery" ng-change="updateBookmarklet()"></input>
