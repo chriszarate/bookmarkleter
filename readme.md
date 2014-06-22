@@ -1,6 +1,7 @@
 # Bookmarkleter
 
 [![Build Status][build-status]][travis-ci]
+[![NPM version][npm-badge]][fury-io]
 
 You have JavaScript. You need a [bookmarklet][bookmarklet]. This does that.
 
@@ -23,6 +24,8 @@ Thanks to [@jpillora][jpillora] for updates and contributions.
 
 [build-status]: https://secure.travis-ci.org/chriszarate/bookmarkleter.svg?branch=master
 [travis-ci]: http://travis-ci.org/chriszarate/bookmarkleter
+[npm-badge]: https://badge.fury.io/js/bookmarkleter.svg
+[fury-io]: http://badge.fury.io/js/bookmarkleter
 [bookmarklet]: http://en.wikipedia.org/wiki/Bookmarklet
 [uglify]: https://github.com/mishoo/UglifyJS
 [jquery]: http://jquery.com
