@@ -22,10 +22,11 @@ var bookmarkleter = function (code, options) {
   if (options.jQuery) {
     code = 'var __hasjq = function () {' + code + '};' +
     'if (window.jQuery) __hasjq();' +
+    'else {' +
     'var s = document.createElement("script");' +
     's.src = "' + jQueryURL + '";' +
     's.onload = __hasjq;' +
-    'document.body.appendChild(s);';
+    'document.body.appendChild(s);}';
   }
 
   // Add anonymous function wrapper, if requested.
