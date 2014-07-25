@@ -42,7 +42,7 @@ var bookmarkleter = function (code, options) {
   // URI-encode special characters.
   specialCharacters.forEach(function (char) {
     var charRegex = new RegExp(char, 'g');
-    minifiedCode = minifiedCode.replace(charRegex, encodeURI(char));
+    minifiedCode = minifiedCode.replace(charRegex, encodeURIComponent(char.replace(/\\/g, '')));
   });
 
   // Add javascript prefix.
