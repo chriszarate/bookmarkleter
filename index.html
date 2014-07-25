@@ -123,17 +123,28 @@
 
 		<p>You have JavaScript. You need a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a>. This does that.</p>
 
-		<h3>Features</h3>
-
-		<ul>
-			<li>Validates and minifies code using <a href="https://github.com/mishoo/UglifyJS">UglifyJS</a></li>
-			<li>URL-encodes special ASCII characters: [space], %, &quot;, &lt;, &gt;, #, @, &amp;, ?</li>
-			<li>Optionally injects <a href="http://jquery.com">jQuery</a></li>
-		</ul>
-
-		<h3>Use it</h3>
-
 		<form onsubmit="return false;" ng-app="bookmarkleter">
+
+			<div class="options">
+
+				<h4>Options</h4>
+
+				<fieldset>
+					<input class="pointer" type="checkbox" id="anonymize" ng-model="anonymize" ng-change="updateBookmarklet()"></input>
+					<label class="pointer" for="anonymize">Wrap in an <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> (anonymizing function).</label>
+				</fieldset>
+
+				<fieldset>
+					<input class="pointer" type="checkbox" id="mangle" ng-model="mangleVars" ng-change="updateBookmarklet()"></input>
+					<label class="pointer" for="mangle">Minify using <a href="https://github.com/mishoo/UglifyJS">UglifyJS</a>.</label>
+				</fieldset>
+
+				<fieldset>
+					<input class="pointer" type="checkbox" id="reqjq" ng-model="requiresJQuery" ng-change="updateBookmarklet()"></input>
+					<label class="pointer" for="reqjq">Make sure a modern version (&gt;= 1.7) of <a href="http://jquery.com">jQuery</a> is available for your code.</label>
+				</fieldset>
+
+			</div>
 
 			<fieldset id="InputFields">
 				<textarea ng-model="input" id="Input" ng-change="updateBookmarklet()"></textarea>
@@ -149,27 +160,6 @@
 				<textarea ng-bind="output" id="Output" wrap="hard" readonly></textarea>
 				<div id="OutputLink" ng-class="output ? '' : 'disabled'">Drag this link to your bookmarks bar: <a id="OutputHref" ng-attr-href="{{ output }}">My Bookmarklet</a></div>
 			</fieldset>
-
-			<div class="options">
-
-				<h4>Options</h4>
-
-				<fieldset>
-					<input class="pointer" type="checkbox" id="anonymize" ng-model="anonymize" ng-change="updateBookmarklet()"></input>
-					<label class="pointer" for="anonymize">Place code in an anonymous wrapper function</label>
-				</fieldset>
-
-				<fieldset>
-					<input class="pointer" type="checkbox" id="mangle" ng-model="mangleVars" ng-change="updateBookmarklet()"></input>
-					<label class="pointer" for="mangle">Mangle variable names (using UglifyJS) to save space</label>
-				</fieldset>
-
-				<fieldset>
-					<input class="pointer" type="checkbox" id="reqjq" ng-model="requiresJQuery" ng-change="updateBookmarklet()"></input>
-					<label class="pointer" for="reqjq">Requires jQuery</label>
-				</fieldset>
-
-			</div>
 
 		</form>
 
