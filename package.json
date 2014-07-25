@@ -1,6 +1,6 @@
 {
   "name": "bookmarkleter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "You have JavaScript. You need a bookmarklet. This does that.",
   "main": "bookmarkleter.js",
   "scripts": {
