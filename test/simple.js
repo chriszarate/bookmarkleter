@@ -2,7 +2,7 @@
 
 var bookmarkleter = require('../bookmarkleter');
 
-exports.testSimple = function (test) {
+exports.simple = function (test) {
 
   var data = [
     ['test', undefined],
