@@ -20,9 +20,7 @@ App.run(function($rootScope) {
     var bookmarkletOptions = {
       anonymize: $rootScope.anonymize,
       jQuery: $rootScope.requiresJQuery,
-      uglify: {
-        mangle: $rootScope.mangleVars
-      }
+      mangleVars: $rootScope.mangleVars
     };
 
     // Make a bookmarklet and show to user. Capture parse errors.

@@ -13,10 +13,13 @@ var jQueryURL = '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js';
 // Create a bookmarklet.
 var bookmarkleter = function (code, options) {
 
-  // Set fromString options for Uglify.
   options = options || {};
-  options.uglify = options.uglify || {};
-  options.uglify.fromString = true;
+
+  // Set Uglify options.
+  var uglifyOptions = {
+    fromString: true,
+    mangle: options.mangleVars
+  };
 
   // Add jQuery, if requested.
   if (options.jQuery) {
@@ -34,7 +37,7 @@ var bookmarkleter = function (code, options) {
   }
 
   // Parse and uglify code.
-  var minifiedCode = uglify.minify(code, options.uglify).code;
+  var minifiedCode = uglify.minify(code, uglifyOptions).code;
 
   // If code uglifies down to nothing, stop processing.
   if (!minifiedCode) return;

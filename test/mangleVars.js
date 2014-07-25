@@ -5,9 +5,7 @@ var bookmarkleter = require('../bookmarkleter');
 exports.mangleVars = function (test) {
 
   var options = {
-    uglify: {
-      mangle: true
-    }
+    mangleVars: true
   };
 
   var data = [
