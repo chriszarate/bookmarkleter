@@ -7,11 +7,12 @@ You have JavaScript. You need a [bookmarklet][bookmarklet]. This does that.
 
 **http://chriszarate.github.io/bookmarkleter**
 
-### Features
+### Options
 
-* Validates and minifies code using [UglifyJS][uglify]
-* URL-encodes special ASCII characters: \[space\], %, ", <, >, #, @, &, ?
-* Optionally injects [jQuery][jquery]
+* URL-encode reserved characters: \[space\], %, ", <, >, #, @, &, ?
+* Wrap in an [IIFE][iife] (anonymizing function).
+* Minify using [UglifyJS][uglify].
+* Make sure a modern version (>= 1.7) of [jQuery][jquery] is available for your code.
 
 ### License
 
@@ -27,6 +28,7 @@ Thanks to [@jpillora][jpillora] for updates and contributions.
 [npm-badge]: https://badge.fury.io/js/bookmarkleter.svg
 [fury-io]: http://badge.fury.io/js/bookmarkleter
 [bookmarklet]: http://en.wikipedia.org/wiki/Bookmarklet
+[iife]: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
 [uglify]: https://github.com/mishoo/UglifyJS
 [jquery]: http://jquery.com
 [jpillora]: https://github.com/jpillora
