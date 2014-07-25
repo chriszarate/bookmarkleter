@@ -18,6 +18,9 @@ var bookmarkleter = function (code, options) {
 
   options = options || {};
 
+  // URL-encode by default.
+  options.urlencode = (options.urlencode === false) ? false : true;
+
   // Set Uglify options.
   var uglifyOptions = {
     fromString: true,
@@ -57,11 +60,13 @@ var bookmarkleter = function (code, options) {
   // If code uglifies down to nothing, stop processing.
   if (!minifiedCode) return;
 
-  // URI-encode special characters.
-  specialCharacters.forEach(function (char) {
-    var charRegex = new RegExp(char, 'g');
-    minifiedCode = minifiedCode.replace(charRegex, encodeURIComponent(char.replace(/\\/g, '')));
-  });
+  // URI-encode special characters, if requested.
+  if (options.urlencode) {
+    specialCharacters.forEach(function (char) {
+      var charRegex = new RegExp(char, 'g');
+      minifiedCode = minifiedCode.replace(charRegex, encodeURIComponent(char.replace(/\\/g, '')));
+    });
+  }
 
   // Add javascript prefix.
   minifiedCode = 'javascript:' + minifiedCode;

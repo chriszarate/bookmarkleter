@@ -8,6 +8,7 @@ var App = angular.module('bookmarkleter', []);
 
 App.run(function($rootScope) {
 
+  $rootScope.urlencode = true;
   $rootScope.anonymize = true;
   $rootScope.mangleVars = true;
 
@@ -18,6 +19,7 @@ App.run(function($rootScope) {
     if(!code) return;
 
     var bookmarkletOptions = {
+      urlencode: $rootScope.urlencode,
       anonymize: $rootScope.anonymize,
       jQuery: $rootScope.requiresJQuery,
       mangleVars: $rootScope.mangleVars

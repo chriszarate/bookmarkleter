@@ -130,6 +130,11 @@
 				<h4>Options</h4>
 
 				<fieldset>
+					<input class="pointer" type="checkbox" id="urlencode" ng-model="urlencode" ng-change="updateBookmarklet()"></input>
+					<label class="pointer" for="urlencode">URL-encode reserved characters: [space], %, &quot;, &lt;, &gt;, #, @, &amp;, ?</label>
+				</fieldset>
+
+				<fieldset>
 					<input class="pointer" type="checkbox" id="anonymize" ng-model="anonymize" ng-change="updateBookmarklet()"></input>
 					<label class="pointer" for="anonymize">Wrap in an <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> (anonymizing function).</label>
 				</fieldset>
