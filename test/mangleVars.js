@@ -11,7 +11,7 @@ exports.mangleVars = function (test) {
   var data = [
     ['var test;', 'javascript:var%20test;'],
     ['var test = function(foo){foo++};', 'javascript:var%20test=function(t){t++};'],
-    ['(function(jQuery){console.log(jQuery.fn.version);})($)', 'javascript:!function(n){console.log(n.fn.version)}($);']
+    ['(function(jQuery){console.log(jQuery.fn.version);})($)', 'javascript:(function(n){console.log(n.fn.version)})($);']
   ];
 
   data.forEach(function (datum) {

@@ -23,6 +23,9 @@ var bookmarkleter = function (code, options) {
 
   // Set Uglify options.
   var uglifyOptions = {
+    compress: {
+      negate_iife: false
+    },
     fromString: true,
     mangle: options.mangleVars
   };
@@ -30,7 +33,7 @@ var bookmarkleter = function (code, options) {
   // Add jQuery, if requested (also adds IIFE wrapper).
   if (options.jQuery) {
     code =
-      '(function ($) {' +
+      'void function ($) {' +
       '  var loadBookmarklet = function ($) {' + code + '};' +
       '  var hasJQuery = $ && $.fn && parseFloat($.fn.jquery) >= ' + jQueryMinVersion + ';' +
       '  if(hasJQuery) {' +
@@ -46,12 +49,12 @@ var bookmarkleter = function (code, options) {
       '    };' +
       '  }' +
       '  document.getElementsByTagName("head")[0].appendChild(s);' +
-      '})(window.jQuery);';
+      '}(window.jQuery);';
   }
 
   // Add IIFE wrapper, if requested.
   if (options.anonymize && !options.jQuery) {
-    code = '(function () {' + code + '})();';
+    code = 'void function () {' + code + '}();';
   }
 
   // Parse and uglify code.
