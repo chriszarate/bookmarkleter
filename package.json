@@ -32,7 +32,6 @@
     "browserify": "^6.3.3",
     "browserify-shim": "^3.8.0",
     "gulp": "^3.8.10",
-    "gulp-browserify": "^0.5.0",
     "gulp-jshint": "^1.9.0",
     "gulp-ng-annotate": "^0.4.0",
     "gulp-uglify": "^1.0.1",
