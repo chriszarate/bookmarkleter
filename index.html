@@ -107,13 +107,11 @@
 
 		</style>
 
-		<script src="build/browser-tool.js"></script>
-
 		<title>Bookmarkleter</title>
 
 	</head>
 
-	<body>
+	<body ng-app="bookmarkleter">
 
 		<header>
 			<h2>Bookmarkleter</h2>
@@ -123,36 +121,36 @@
 
 		<p>You have JavaScript. You need a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a>. This does that.</p>
 
-		<form onsubmit="return false;" ng-app="bookmarkleter">
+		<form onsubmit="return false;" ng-controller="appController">
 
 			<div class="options">
 
 				<h4>Options</h4>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" id="urlencode" ng-model="urlencode" ng-change="updateBookmarklet()"></input>
+					<input class="pointer" type="checkbox" ng-model="options.urlencode" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="urlencode">URL-encode reserved characters: [space], %, &quot;, &lt;, &gt;, #, @, &amp;, ?</label>
 				</fieldset>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" id="anonymize" ng-model="anonymize" ng-change="updateBookmarklet()"></input>
+					<input class="pointer" type="checkbox" ng-model="options.anonymize" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="anonymize">Wrap in an <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> (anonymizing function).</label>
 				</fieldset>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" id="mangle" ng-model="mangleVars" ng-change="updateBookmarklet()"></input>
+					<input class="pointer" type="checkbox" ng-model="options.mangleVars" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="mangle">Minify using <a href="https://github.com/mishoo/UglifyJS">UglifyJS</a>.</label>
 				</fieldset>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" id="reqjq" ng-model="requiresJQuery" ng-change="updateBookmarklet()"></input>
+					<input class="pointer" type="checkbox" ng-model="options.jQuery" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="reqjq">Make sure a modern version (&gt;= 1.7) of <a href="http://jquery.com">jQuery</a> is available for your code.</label>
 				</fieldset>
 
 			</div>
 
 			<fieldset id="InputFields">
-				<textarea ng-model="input" id="Input" ng-change="updateBookmarklet()"></textarea>
+				<textarea ng-model="input" ng-change="updateBookmarklet(options)"></textarea>
 			</fieldset>
 
 			<fieldset id="Labels">
@@ -173,6 +171,8 @@
 		<p>This is free software. It is released to the public domain without warranty.</p>
 
 		<div><a href="https://github.com/chriszarate/bookmarkleter"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a></div>
+
+		<script src="build/browser-tool.js"></script>
 
 	</body>
 
