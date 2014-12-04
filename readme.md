@@ -5,14 +5,35 @@
 
 You have JavaScript. You need a [bookmarklet][bookmarklet]. This does that.
 
+### Browser tool
+
+Create bookmarklets in your browser with a simple copy and paste.
+
 **http://chriszarate.github.io/bookmarkleter**
+
+### NPM module
+
+```
+npm install bookmarkleter
+```
+
+```js
+var bookmarkleter = require('./bookmarkleter');
+var bookmarklet = bookmarkleter(code, options);
+```
 
 ### Options
 
-* URL-encode reserved characters: \[space\], %, ", <, >, #, @, &, ?
-* Wrap in an [IIFE][iife] (anonymizing function).
-* Minify using [UglifyJS][uglify].
-* Make sure a modern version (>= 1.7) of [jQuery][jquery] is available for your code.
+All options are Boolean flags.
+
+`urlencode`: URL-encode reserved characters: \[space\], %, ", <, >, #, @, &, ?
+
+`anonymize`: Wrap in an [IIFE][iife] (anonymizing function).
+
+`mangleVars`: Minify using [UglifyJS][uglify].
+
+`jQuery`: Make sure a modern version (>= 1.7) of [jQuery][jquery] is available
+for your code.
 
 ### License
 
