@@ -2,7 +2,6 @@
 
 var gulp = require('gulp');
 
-// Lint
 var jshint = require('gulp-jshint');
 gulp.task('lint', function () {
   gulp.src(['*.js', 'test/*.js'])
@@ -10,14 +9,20 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('default'));
 });
 
-// Browserify
-var browserify = require('gulp-browserify');
-var uglify = require('gulp-uglify');
+var browserify = require('browserify');
 var ngAnnotate = require('gulp-ng-annotate');
+var transform = require('vinyl-transform');
+var uglify = require('gulp-uglify');
+
+var browserified = transform(function (filename) {
+  var b = browserify(filename);
+  return b.bundle();
+});
+
 gulp.task('browserify', function () {
-  gulp.src('browser-tool.js')
+  gulp.src(['browser-tool.js'])
     .pipe(ngAnnotate())
-    .pipe(browserify())
-    .pipe(uglify({preserveComments: 'some'}))
+    .pipe(browserified)
+    .pipe(uglify())
     .pipe(gulp.dest('./build'));
 });
