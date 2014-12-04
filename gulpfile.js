@@ -10,13 +10,6 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('default'));
 });
 
-// Clean
-var clean = require('gulp-clean');
-gulp.task('clean', function () {
-  gulp.src('build', {read: false})
-    .pipe(clean());
-});
-
 // Browserify
 var browserify = require('gulp-browserify');
 var uglify = require('gulp-uglify');
