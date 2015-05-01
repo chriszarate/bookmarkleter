@@ -24,7 +24,9 @@ app.controller('appController', ['$scope', function ($scope) {
 
     var code = $scope.input;
 
-    if(!code) return;
+    if (!code) {
+      return;
+    }
 
     // Make a bookmarklet and show to user. Capture parse errors.
     try {

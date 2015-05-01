@@ -24,7 +24,9 @@ var bookmarkleter = function (code, options) {
   // Set Uglify options.
   var uglifyOptions = {
     compress: {
+      // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
       negate_iife: false
+      // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
     },
     fromString: true,
     mangle: options.mangleVars
@@ -61,7 +63,9 @@ var bookmarkleter = function (code, options) {
   var minifiedCode = uglify.minify(code, uglifyOptions).code;
 
   // If code uglifies down to nothing, stop processing.
-  if (!minifiedCode) return;
+  if (!minifiedCode) {
+    return;
+  }
 
   // URI-encode special characters, if requested.
   if (options.urlencode) {
