@@ -5,7 +5,7 @@ var bookmarkleter = require('../bookmarkleter');
 exports.simple = function (test) {
 
   var data = [
-    ['test', undefined],
+    ['test', 'javascript:test;'],
     ['var test', 'javascript:var%20test;'],
     ['var test = function(){var foo};', 'javascript:var%20test=function(){};'],
     ['document.write("bookmarklet");', 'javascript:document.write(%22bookmarklet%22);'],
