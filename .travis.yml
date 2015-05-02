@@ -1,3 +1,10 @@
 language: node_js
 node_js:
   - 0.10
+env:
+  global:
+    - CODECLIMATE_REPO_TOKEN=29baf8715a6f03ccdd238c304743fffbf6a3987f6640be79a8803b305fcfd272
+before_script:
+  - npm install -g codeclimate-test-reporter
+after_script:
+  - codeclimate < coverage/**/lcov.info

@@ -1,0 +1,4 @@
+exclude_paths:
+  - build/*
+languages:
+  JavaScript: true
