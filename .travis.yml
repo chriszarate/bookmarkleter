@@ -7,4 +7,4 @@ env:
 before_script:
   - npm install -g codeclimate-test-reporter
 after_script:
-  - codeclimate < coverage/**/lcov.info
+  - codeclimate < coverage/lcov.info
