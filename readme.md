@@ -26,14 +26,18 @@ var bookmarklet = bookmarkleter(code, options);
 
 All options are Boolean flags.
 
-`urlencode`: URL-encode reserved characters: \[space\], %, ", <, >, #, @, &, ?
+  * `urlencode` (default `true`): URL-encode reserved characters: \[space\], %,
+    ", <, >, #, @, &, ?
 
-`anonymize`: Wrap in an [IIFE][iife] (anonymizing function).
+  * `anonymize` (default `false`): Wrap in an [IIFE][iife] (anonymizing
+    function) to prevent exposing variables to the page on which the
+    bookmarklet is running.
 
-`mangleVars`: Minify using [UglifyJS][uglify].
+  * `mangleVars` (default `false`): Minify using [UglifyJS][uglify] to reduce
+    the size of the bookmarklet.
 
-`jQuery`: Make sure a modern version (>= 1.7) of [jQuery][jquery] is available
-for your code.
+  * `jQuery` (default `false`): Make sure a modern version (>= 1.7) of
+    [jQuery][jquery] is available for your code.
 
 ### License
 
