@@ -1,7 +1,9 @@
 # Bookmarkleter
 
-[![Build Status][build-status]][travis-ci]
-[![NPM version][npm-badge]][fury-io]
+[![Build status][build-status]][travis-ci]
+[![Test coverage][test-coverage]][code-climate]
+[![Code climate][code-climate-gpa]][code-climate]
+[![NPM version][npm-version]][fury-io]
 
 You have JavaScript. You need a [bookmarklet][bookmarklet]. This does that.
 
@@ -50,7 +52,10 @@ Thanks to [@jpillora][jpillora] for updates and contributions.
 
 [build-status]: https://secure.travis-ci.org/chriszarate/bookmarkleter.svg?branch=master
 [travis-ci]: http://travis-ci.org/chriszarate/bookmarkleter
-[npm-badge]: https://badge.fury.io/js/bookmarkleter.svg
+[test-coverage]: https://codeclimate.com/github/chriszarate/bookmarkleter/badges/coverage.svg
+[code-climate]: https://codeclimate.com/github/chriszarate/bookmarkleter
+[code-climate-gpa]: https://codeclimate.com/github/chriszarate/bookmarkleter/badges/gpa.svg
+[npm-version]: https://badge.fury.io/js/bookmarkleter.svg
 [fury-io]: http://badge.fury.io/js/bookmarkleter
 [bookmarklet]: http://en.wikipedia.org/wiki/Bookmarklet
 [iife]: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
