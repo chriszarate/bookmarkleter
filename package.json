@@ -5,8 +5,9 @@
   "main": "bookmarkleter.js",
   "scripts": {
     "build": "browserify browser-tool.js | uglifyjs > build/browser-tool.js",
+    "coverage": "istanbul cover nodeunit test",
     "lint": "jshint *.js test/*.js && jscs *.js test/*.js",
-    "test": "npm run lint && nodeunit test"
+    "test": "npm run lint && npm run coverage"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "angular": "^1.3.15",
     "browserify": "^10.0.0",
+    "istanbul": "^0.3.13",
     "jscs": "^1.13.1",
     "jshint": "^2.7.0",
     "nodeunit": "^0.9.1"
