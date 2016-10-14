@@ -28,6 +28,7 @@
     "nodeunit": "^0.9.1"
   },
   "dependencies": {
-    "uglify-js": "^2.4.20"
+    "babel-standalone": "^6.17.0",
+    "uglify-js": "^2.7.3"
   }
 }
