@@ -16,7 +16,7 @@ exports.returnUndefined = function (test) {
   ];
 
   data.forEach(function (datum) {
-    var bookmarkletCode = bookmarkleter(datum, options).replace(/^javascript:/, '');
+    var bookmarkletCode = bookmarkleter(datum, options);
     test.equal(eval(bookmarkletCode), undefined);
   });
 
