@@ -10,8 +10,8 @@ exports.anonymize = function (test) {
 
   var data = [
     ['var test;', undefined],
-    ['console.log("test");', 'javascript:void%20function(){console.log(%22test%22)}();'],
-    ['(function(){console.log("test");})()', 'javascript:void%20function(){(function(){console.log(%22test%22)})()}();']
+    ['console.log("test");', 'javascript:!function(){console.log(%22test%22)}();'],
+    ['(function(){console.log("test");})()', 'javascript:!function(){(function(){console.log(%22test%22)})()}();']
   ];
 
   data.forEach(function (datum) {
