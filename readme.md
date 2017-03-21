@@ -57,8 +57,8 @@ Thanks to [@jpillora][jpillora] for updates and contributions.
 [code-climate-gpa]: https://codeclimate.com/github/chriszarate/bookmarkleter/badges/gpa.svg
 [npm-version]: https://badge.fury.io/js/bookmarkleter.svg
 [fury-io]: http://badge.fury.io/js/bookmarkleter
-[bookmarklet]: http://en.wikipedia.org/wiki/Bookmarklet
-[iife]: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+[bookmarklet]: http://en.wikipedia.org/wiki/Bookmarklet "Wikipedia entry on Bookmarklets"
+[iife]: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression "Immediately invoked function expression"
 [uglify]: https://github.com/mishoo/UglifyJS
 [jquery]: http://jquery.com
 [jpillora]: https://github.com/jpillora
