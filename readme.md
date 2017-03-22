@@ -19,6 +19,12 @@ Create bookmarklets in your browser with a simple copy and paste.
 npm install bookmarkleter
 ```
 
+or
+
+```
+yarn add bookmarkleter
+```
+
 ```js
 var bookmarkleter = require('./bookmarkleter');
 var bookmarklet = bookmarkleter(code, options);
