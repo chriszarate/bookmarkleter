@@ -36,6 +36,8 @@ app.controller('appController', ['$scope', function ($scope) {
     $scope.displayName = name;
 
     if (!code) {
+      $scope.output = '';
+      $scope.error = null;
       return;
     }
 
