@@ -43,6 +43,11 @@
 				font-size: .7em;
 			}
 
+			input[type=text] {
+				font-family: inherit;
+				font-size: .7em;
+			}
+
 			input[type=checkbox] {
 				vertical-align: middle;
 			}
@@ -150,6 +155,8 @@
 			</div>
 
 			<fieldset id="InputFields">
+				<input type="text" aria-label="Bookmarklet name" ng-change="updateBookmarklet(options)" ng-model="name" />
+				<br />
 				<textarea ng-model="input" ng-change="updateBookmarklet(options)"></textarea>
 			</fieldset>
 
@@ -161,7 +168,7 @@
 
 			<fieldset id="OutputFields">
 				<textarea ng-bind="output" id="Output" wrap="hard" readonly></textarea>
-				<div id="OutputLink" ng-class="output ? '' : 'disabled'">Drag this link to your bookmarks bar: <a id="OutputHref" ng-attr-href="{{ output }}">My Bookmarklet</a></div>
+				<div id="OutputLink" ng-class="output ? '' : 'disabled'">Drag this link to your bookmarks bar: <a id="OutputHref" ng-attr-href="{{ output }}">{{ displayName }}</a></div>
 			</fieldset>
 
 		</form>
