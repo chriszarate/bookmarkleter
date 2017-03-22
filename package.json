@@ -7,7 +7,7 @@
     "build": "browserify browser-tool.js | uglifyjs > build/browser-tool.js",
     "coverage": "istanbul cover nodeunit test",
     "lint": "jshint *.js test/*.js && jscs *.js test/*.js",
-    "test": "yarn run lint && yarn run coverage"
+    "test": "npm run lint && npm run coverage"
   },
   "repository": {
     "type": "git",
