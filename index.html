@@ -37,10 +37,23 @@
 			}
 
 			textarea {
+				border: solid 1px gray;
+				box-sizing: border-box;
+				padding: 5px;
 				width: 100%;
 				height: 15em;
 				font-family: monospace;
 				font-size: .7em;
+			}
+
+			input[type=text] {
+				border: solid 1px gray;
+				box-sizing: border-box;
+				font-family: inherit;
+				font-size: .7em;
+				margin-bottom: 10px;
+				padding: 3px 5px;
+				width: 100%;
 			}
 
 			input[type=checkbox] {
@@ -150,7 +163,9 @@
 			</div>
 
 			<fieldset id="InputFields">
-				<textarea ng-model="input" ng-change="updateBookmarklet(options)"></textarea>
+				<input type="text" aria-label="Bookmarklet name" placeholder="Bookmarklet name" ng-change="updateBookmarklet(options)" ng-model="name" />
+				<br />
+				<textarea placeholder="Paste your JavaScript here." ng-model="input" ng-change="updateBookmarklet(options)"></textarea>
 			</fieldset>
 
 			<fieldset id="Labels">
@@ -161,7 +176,7 @@
 
 			<fieldset id="OutputFields">
 				<textarea ng-bind="output" id="Output" wrap="hard" readonly></textarea>
-				<div id="OutputLink" ng-class="output ? '' : 'disabled'">Drag this link to your bookmarks bar: <a id="OutputHref" ng-attr-href="{{ output }}">My Bookmarklet</a></div>
+				<div id="OutputLink" ng-class="output ? '' : 'disabled'">Drag this link to your bookmarks bar: <a id="OutputHref" ng-attr-href="{{ output }}">{{ displayName }}</a></div>
 			</fieldset>
 
 		</form>
