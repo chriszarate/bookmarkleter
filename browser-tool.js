@@ -5,6 +5,8 @@ var bookmarkleter = require('./bookmarkleter');
 
 var app = angular.module('bookmarkleter', []);
 
+var defaultName = 'My Bookmarklet';
+
 app.config(['$compileProvider', function ($compileProvider) {
   $compileProvider.aHrefSanitizationWhitelist(/./);
 }]);
@@ -18,13 +20,24 @@ app.controller('appController', ['$scope', function ($scope) {
     jQuery: false
   };
 
+  $scope.name = $scope.displayName = defaultName;
+
   $scope.error = null;
 
   $scope.updateBookmarklet = function (options) {
 
     var code = $scope.input;
+    var name = $scope.name;
+
+    if (name.trim().length === 0) {
+      name = defaultName;
+    }
+
+    $scope.displayName = name;
 
     if (!code) {
+      $scope.output = '';
+      $scope.error = null;
       return;
     }
 
