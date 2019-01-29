@@ -9,9 +9,9 @@ exports.mangleVars = function (test) {
   };
 
   var data = [
-    ['var test;', 'javascript:var%20test;'],
-    ['var test = function(foo){foo++};', 'javascript:var%20test=function(t){t++};'],
-    ['(function(jQuery){console.log(jQuery.fn.version);})($)', 'javascript:(function(n){console.log(n.fn.version)})($);']
+    ['var test;', 'javascript:%22use%20strict%22;var%20test;'],
+    ['var test = function(foo){foo++};', 'javascript:%22use%20strict%22;var%20test=function(t){t++};'],
+    ['(function(jQuery){console.log(jQuery.fn.version);})($)', 'javascript:%22use%20strict%22;(function(n){console.log(n.fn.version)})($);']
   ];
 
   data.forEach(function (datum) {

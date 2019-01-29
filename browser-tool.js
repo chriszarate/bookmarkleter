@@ -15,7 +15,6 @@ app.controller('appController', ['$scope', function ($scope) {
 
   $scope.options = {
     urlencode: true,
-    anonymize: true,
     mangleVars: true,
     jQuery: false
   };
