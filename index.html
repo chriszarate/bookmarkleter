@@ -141,27 +141,27 @@
 				<h4>Options</h4>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" ng-model="options.urlencode" ng-change="updateBookmarklet(options)"></input>
+					<input class="pointer" type="checkbox" id="urlencode" ng-model="options.urlencode" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="urlencode">URL-encode reserved characters: [space], %, &quot;, &lt;, &gt;, #, @, &amp;, ?</label>
 				</fieldset>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" ng-model="options.iife" ng-change="updateBookmarklet(options)"></input>
+					<input class="pointer" type="checkbox" id="iife" ng-model="options.iife" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="iife">Wrap in an <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> (anonymizing function).</label>
 				</fieldset>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" ng-model="options.mangleVars" ng-change="updateBookmarklet(options)"></input>
+					<input class="pointer" type="checkbox" id="mangle" ng-model="options.mangleVars" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="mangle">Minify code using <a href="https://github.com/babel/minify">Babel Minify</a>.</label>
 				</fieldset>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" ng-model="options.transpile" ng-change="updateBookmarklet(options)"></input>
+					<input class="pointer" type="checkbox" id="transpile" ng-model="options.transpile" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="transpile">Transpile ES2015 to ES5 using Babel.</label>
 				</fieldset>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" ng-model="options.jQuery" ng-change="updateBookmarklet(options)"></input>
+					<input class="pointer" type="checkbox" id="reqjq" ng-model="options.jQuery" ng-change="updateBookmarklet(options)"></input>
 					<label class="pointer" for="reqjq">Make sure a modern version (≥ 1.7) of <a href="http://jquery.com">jQuery</a> is available for your code.</label>
 				</fieldset>
 
