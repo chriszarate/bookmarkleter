@@ -11,7 +11,7 @@ You have JavaScript. You need a [bookmarklet][bookmarklet]. This does that.
 
 Create bookmarklets in your browser with a simple copy and paste.
 
-**http://chriszarate.github.io/bookmarkleter**
+**https://chriszarate.github.io/bookmarkleter**
 
 ### NPM module
 
