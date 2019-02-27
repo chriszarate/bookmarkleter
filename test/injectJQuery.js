@@ -1,22 +1,19 @@
-'use strict';
+const bookmarkleter = require( '../bookmarkleter' );
 
-var bookmarkleter = require('../bookmarkleter');
-
-exports.injectJQuery = function (test) {
-
-  var options = {
-    jQuery: true
-  };
+exports.injectJQuery = test => {
+  const hasJQuery = ( input, options = {} ) => bookmarkleter( input, options ).includes( 'loadBookmarklet' );
 
   var data = [
-    ['var test;', 'javascript:%22use%20strict%22;!function($){if($%26%26$.fn%26%26parseFloat($.fn.jquery)%3E=1.7);else{var%20s=document.createElement(%22script%22);s.src=%22//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js%22,s.onload=s.onreadystatechange=function(){var%20state=this.readyState;state%26%26%22loaded%22!==state%26%26%22complete%22!==state||jQuery.noConflict()}}document.getElementsByTagName(%22head%22)[0].appendChild(s)}(window.jQuery);'],
-    ['console.log("test");', 'javascript:%22use%20strict%22;!function($){var%20loadBookmarklet=function($){console.log(%22test%22)};if($%26%26$.fn%26%26parseFloat($.fn.jquery)%3E=1.7)loadBookmarklet();else{var%20s=document.createElement(%22script%22);s.src=%22//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js%22,s.onload=s.onreadystatechange=function(){var%20state=this.readyState;state%26%26%22loaded%22!==state%26%26%22complete%22!==state||loadBookmarklet(jQuery.noConflict())}}document.getElementsByTagName(%22head%22)[0].appendChild(s)}(window.jQuery);']
+    'var test;',
+    'console.log("test");',
   ];
 
-  data.forEach(function (datum) {
-    test.equal(bookmarkleter(datum[0], options), datum[1]);
-  });
+  // jQuery: true
+  data.forEach( input => test.ok( hasJQuery( input, { jQuery: true } ) ) );
+
+  // jQuery: false (default)
+  data.forEach( input => test.ok( ! hasJQuery( input, { jQuery: false } ) ) );
+  data.forEach( input => test.ok( ! hasJQuery( input ) ) );
 
   test.done();
-
 };

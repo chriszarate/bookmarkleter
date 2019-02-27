@@ -1,23 +1,26 @@
-'use strict';
+const bookmarkleter = require( '../bookmarkleter' );
 
-var bookmarkleter = require('../bookmarkleter');
+exports.anonymize = test => {
+  const hasIife = ( input, options = {} ) => bookmarkleter( input, options ).includes( 'void%20function' );
 
-exports.anonymize = function (test) {
-
-  var options = {
-    anonymize: true
-  };
-
-  var data = [
-    ['var test;', undefined],
-    ['console.log("test");', 'javascript:%22use%20strict%22;!function(){console.log(%22test%22)}();'],
-    ['(function(){console.log("test");})()', 'javascript:%22use%20strict%22;!function(){(function(){console.log(%22test%22)})()}();']
+  const data = [
+    'var test;',
+    'console.log("test");',
+    '(function(){console.log("test");})()',
   ];
 
-  data.forEach(function (datum) {
-    test.equal(bookmarkleter(datum[0], options), datum[1]);
-  });
+  // iife: true
+  data.forEach( input => test.ok( hasIife( input, { iife: true } ) ) );
+
+  // iife: false (default)
+  data.forEach( input => test.ok( ! hasIife( input, { iife: false } ) ) );
+  data.forEach( input => test.ok( ! hasIife( input ) ) );
+
+  // anonymize: true (legacy option)
+  data.forEach( input => test.ok( hasIife( input, { anonymize: true } ) ) );
+
+  // anonymize: false (legacy option)
+  data.forEach( input => test.ok( ! hasIife( input, { anonymize: false } ) ) );
 
   test.done();
-
 };

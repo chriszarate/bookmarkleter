@@ -1,15 +1,15 @@
 'use strict';
 
 // Load dependencies.
-var uglify = require('uglify-js');
 var Babel = require('babel-standalone');
+var minify = require('babel-minify');
 
 // URI-encode only a subset of characters. Most user agents are permissive with
 // non-reserved characters, so don't obfuscate more than we have to.
 var specialCharacters = ['%', '"', '<', '>', '#', '@', ' ', '\\&', '\\?'];
 
 // CDN URL for jQuery.
-var jQueryURL = '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js';
+var jQueryURL = 'https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js';
 
 // Default minimum jQuery version.
 var jQueryMinVersion = 1.7;
@@ -21,17 +21,6 @@ var bookmarkleter = function (code, options) {
 
   // URL-encode by default.
   options.urlencode = (options.urlencode === false) ? false : true;
-
-  // Set Uglify options.
-  var uglifyOptions = {
-    compress: {
-      // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-      negate_iife: false
-      // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
-    },
-    fromString: true,
-    mangle: options.mangleVars
-  };
 
   // Add jQuery, if requested (also adds IIFE wrapper).
   if (options.jQuery) {
@@ -56,16 +45,22 @@ var bookmarkleter = function (code, options) {
   }
 
   // Add IIFE wrapper, if requested.
-  if (options.anonymize && !options.jQuery) {
+  if ((options.iife || options.anonymize) && !options.jQuery) {
     code = 'void function () {' + code + '}();';
   }
 
-  // Transpile, parse, and uglify/minify code.
-  var transpiledCode = Babel.transform(code, { presets: ['es2015'] }).code;
-  var minifiedCode = uglify.minify(transpiledCode, uglifyOptions).code;
+  // Transpile to ES5, if requested.
+  if (options.transpile) {
+    code = Babel.transform(code, { presets: ['es2015'] }).code.replace( /\n+/g, '' );
+  }
 
-  // If code uglifies down to nothing, stop processing.
-  if (!minifiedCode || minifiedCode === '"use strict";') {
+  // Parse and minify code.
+  if (options.minify || options.mangleVars) {
+    code = minify(code, { mangle: true }).code;
+  }
+
+  // If code minifies down to nothing, stop processing.
+  if (!code || code === '"use strict";') {
     return;
   }
 
@@ -73,15 +68,15 @@ var bookmarkleter = function (code, options) {
   if (options.urlencode) {
     specialCharacters.forEach(function (char) {
       var charRegex = new RegExp(char, 'g');
-      minifiedCode = minifiedCode.replace(charRegex, encodeURIComponent(char.replace(/\\/g, '')));
+      code = code.replace(charRegex, encodeURIComponent(char.replace(/\\/g, '')));
     });
   }
 
   // Add javascript prefix.
-  minifiedCode = 'javascript:' + minifiedCode;
+  code = 'javascript:' + code;
 
   // Return bookmarklet.
-  return minifiedCode;
+  return code;
 
 };
 

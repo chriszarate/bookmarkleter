@@ -7,42 +7,37 @@
 
 You have JavaScript. You need a [bookmarklet][bookmarklet]. This does that.
 
-### Browser tool
+## Browser tool
 
 Create bookmarklets in your browser with a simple copy and paste.
 
-**http://chriszarate.github.io/bookmarkleter**
+**https://chriszarate.github.io/bookmarkleter/**
 
-### NPM module
-
-```
-npm install bookmarkleter
-```
-
-or
+## NPM module
 
 ```
-yarn add bookmarkleter
+npm install --save bookmarkleter
 ```
 
 ```js
-var bookmarkleter = require('./bookmarkleter');
-var bookmarklet = bookmarkleter(code, options);
+const bookmarkleter = require( 'bookmarkleter' );
+const bookmarklet = bookmarkleter( code, options );
 ```
 
-### Options
+## Options
 
 All options are Boolean flags.
 
   * `urlencode` (default `true`): URL-encode reserved characters: \[space\], %,
     ", <, >, #, @, &, ?
 
-  * `anonymize` (default `false`): Wrap in an [IIFE][iife] (anonymizing
-    function) to prevent exposing variables to the page on which the
-    bookmarklet is running.
+  * `iife` (default `false`): Wrap in an [IIFE][iife] (anonymizing function) to
+    prevent exposing variables to the page on which the bookmarklet is running.
 
-  * `mangleVars` (default `false`): Minify using [UglifyJS][uglify] to reduce
-    the size of the bookmarklet.
+  * `minify` (default `false`): Minify using [babel-minify][babel-minify] to
+    reduce the size of the bookmarklet.
+
+  * `transpile` (default `false`): Transpile to ES5 using [Babel][babel].
 
   * `jQuery` (default `false`): Make sure a modern version (>= 1.7) of
     [jQuery][jquery] is available for your code.
@@ -65,6 +60,7 @@ Thanks to [@jpillora][jpillora] for updates and contributions.
 [fury-io]: http://badge.fury.io/js/bookmarkleter
 [bookmarklet]: http://en.wikipedia.org/wiki/Bookmarklet "Wikipedia entry on Bookmarklets"
 [iife]: http://en.wikipedia.org/wiki/Immediately-invoked_function_expression "Immediately invoked function expression"
-[uglify]: https://github.com/mishoo/UglifyJS
+[babel]: https://babeljs.io
+[babel-minify]: https://github.com/babel/minify
 [jquery]: http://jquery.com
 [jpillora]: https://github.com/jpillora
