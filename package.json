@@ -4,10 +4,9 @@
   "description": "You have JavaScript. You need a bookmarklet. This does that.",
   "main": "bookmarkleter.js",
   "scripts": {
-    "build": "browserify browser-tool.js | uglifyjs > build/browser-tool.js",
+    "build": "browserify browser-tool.js | minify > build/browser-tool.js",
     "coverage": "istanbul cover nodeunit test",
-    "lint": "jshint *.js test/*.js && jscs *.js test/*.js",
-    "test": "npm run lint && npm run coverage"
+    "test": "npm run coverage"
   },
   "repository": {
     "type": "git",
@@ -23,12 +22,10 @@
     "angular": "^1.6.3",
     "browserify": "^14.1.0",
     "istanbul": "^0.4.5",
-    "jscs": "^3.0.7",
-    "jshint": "^2.9.4",
     "nodeunit": "^0.11.0"
   },
   "dependencies": {
-    "babel-standalone": "^6.17.0",
-    "uglify-js": "^2.8.14"
+    "babel-minify": "^0.5.0",
+    "babel-standalone": "^6.17.0"
   }
 }

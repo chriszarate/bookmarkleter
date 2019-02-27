@@ -146,13 +146,18 @@
 				</fieldset>
 
 				<fieldset>
-					<input class="pointer" type="checkbox" ng-model="options.anonymize" ng-change="updateBookmarklet(options)"></input>
-					<label class="pointer" for="anonymize">Wrap in an <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> (anonymizing function).</label>
+					<input class="pointer" type="checkbox" ng-model="options.iife" ng-change="updateBookmarklet(options)"></input>
+					<label class="pointer" for="iife">Wrap in an <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a> (anonymizing function).</label>
 				</fieldset>
 
 				<fieldset>
 					<input class="pointer" type="checkbox" ng-model="options.mangleVars" ng-change="updateBookmarklet(options)"></input>
-					<label class="pointer" for="mangle">Minify using <a href="https://github.com/mishoo/UglifyJS">UglifyJS</a>.</label>
+					<label class="pointer" for="mangle">Minify code using <a href="https://github.com/babel/minify">Babel Minify</a>.</label>
+				</fieldset>
+
+				<fieldset>
+					<input class="pointer" type="checkbox" ng-model="options.transpile" ng-change="updateBookmarklet(options)"></input>
+					<label class="pointer" for="transpile">Transpile ES2015 to ES5 using Babel.</label>
 				</fieldset>
 
 				<fieldset>

@@ -1,23 +1,29 @@
-'use strict';
+const bookmarkleter = require( '../bookmarkleter' );
 
-var bookmarkleter = require('../bookmarkleter');
-
-exports.mangleVars = function (test) {
-
-  var options = {
-    mangleVars: true
-  };
-
-  var data = [
-    ['var test;', 'javascript:%22use%20strict%22;var%20test;'],
-    ['var test = function(foo){foo++};', 'javascript:%22use%20strict%22;var%20test=function(t){t++};'],
-    ['(function(jQuery){console.log(jQuery.fn.version);})($)', 'javascript:%22use%20strict%22;(function(n){console.log(n.fn.version)})($);']
+exports.mangleVars = test => {
+  const data = [
+    [
+      'var test = function(foo){foo++};',
+      'javascript:var%20test=function(a){a++};',
+    ],
+    [
+      '(function(jQuery){console.log(jQuery.fn.version);})($)',
+      'javascript:(function(a){console.log(a.fn.version)})($);',
+    ],
   ];
 
-  data.forEach(function (datum) {
-    test.equal(bookmarkleter(datum[0], options), datum[1]);
-  });
+  // minify: true
+  data.forEach( ( [ input, output ] ) => test.equal( bookmarkleter( input, { minify: true } ), output ) );
+
+  // minify: false (default)
+  data.forEach( ( [ input, output ] ) => test.notEqual( bookmarkleter( input, { minify: false } ), output ) );
+  data.forEach( ( [ input, output ] ) => test.notEqual( bookmarkleter( input ), output ) );
+
+  // mangleVars: true (legacy option)
+  data.forEach( ( [ input, output ] ) => test.equal( bookmarkleter( input, { mangleVars: true } ), output ) );
+
+  // mangleVars: false (legacy option)
+  data.forEach( ( [ input, output ] ) => test.notEqual( bookmarkleter( input, { mangleVars: false } ), output ) );
 
   test.done();
-
 };

@@ -1,18 +1,18 @@
-'use strict';
+const bookmarkleter = require( '../bookmarkleter' );
 
-var bookmarkleter = require('../bookmarkleter');
-
-exports.encodeSpecialCharacters = function (test) {
-
-  var data = [
-    ['var test = \'%"<>#@&?\';', 'javascript:%22use%20strict%22;var%20test=\'%25%22%3C%3E%23%40%26%3F\';'],
-    ['var test = \'Iñtërnâtiônàlizætiøn\';', 'javascript:%22use%20strict%22;var%20test=%22Iñtërnâtiônàlizætiøn%22;']
+exports.encodeSpecialCharacters = test => {
+  const data = [
+    [
+      'var test = \'%"<>#@&?\';',
+      'javascript:var%20test%20=%20\'%25%22%3C%3E%23%40%26%3F\';',
+    ],
+    [
+      'var test = \'Iñtërnâtiônàlizætiøn\';',
+      'javascript:var%20test%20=%20\'Iñtërnâtiônàlizætiøn\';',
+    ],
   ];
 
-  data.forEach(function (datum) {
-    test.equal(bookmarkleter(datum[0]), datum[1]);
-  });
+  data.forEach( ( [ input, output ] ) => test.equal( bookmarkleter( input ), output ) );
 
   test.done();
-
 };

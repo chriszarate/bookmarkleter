@@ -1,24 +1,15 @@
-'use strict';
+const bookmarkleter = require( '../bookmarkleter' );
 
-var bookmarkleter = require('../bookmarkleter');
+exports.returnUndefined = test => {
+  const evalCode = input => eval( bookmarkleter( input, { urlencode: false } ) );
 
-exports.returnUndefined = function (test) {
-
-  var options = {
-    urlencode: false
-  };
-
-  var data = [
+  const data = [
     'void function () { return undefined; }()',
     'void function () { return false; }()',
-    'void function () { return true; }()'
+    'void function () { return true; }()',
   ];
 
-  data.forEach(function (datum) {
-    var bookmarkletCode = bookmarkleter(datum, options);
-    test.equal(eval(bookmarkletCode), undefined);
-  });
+  data.forEach( input => test.equal( evalCode( input ), undefined ) );
 
   test.done();
-
 };
