@@ -55,6 +55,11 @@ var bookmarkleter = function (code, options) {
       '}(window.jQuery);';
   }
 
+  // Add IIFE wrapper, if requested.
+  if (options.anonymize && !options.jQuery) {
+    code = 'void function () {' + code + '}();';
+  }
+
   // Transpile, parse, and uglify/minify code.
   var transpiledCode = Babel.transform(code, { presets: ['es2015'] }).code;
   var minifiedCode = uglify.minify(transpiledCode, uglifyOptions).code;
