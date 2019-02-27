@@ -3,6 +3,9 @@
   "version": "1.0.0-beta1",
   "description": "You have JavaScript. You need a bookmarklet. This does that.",
   "main": "bookmarkleter.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "build": "browserify browser-tool.js | minify > build/browser-tool.js",
     "coverage": "istanbul cover nodeunit test",
