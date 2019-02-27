@@ -1,6 +1,6 @@
 {
   "name": "bookmarkleter",
-  "version": "0.2.2",
+  "version": "1.0.0-beta1",
   "description": "You have JavaScript. You need a bookmarklet. This does that.",
   "main": "bookmarkleter.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "nodeunit": "^0.11.0"
   },
   "dependencies": {
+    "babel-standalone": "^6.17.0",
     "uglify-js": "^2.8.14"
   }
 }

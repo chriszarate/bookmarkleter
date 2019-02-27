@@ -2,6 +2,7 @@
 
 // Load dependencies.
 var uglify = require('uglify-js');
+var Babel = require('babel-standalone');
 
 // URI-encode only a subset of characters. Most user agents are permissive with
 // non-reserved characters, so don't obfuscate more than we have to.
@@ -59,11 +60,12 @@ var bookmarkleter = function (code, options) {
     code = 'void function () {' + code + '}();';
   }
 
-  // Parse and uglify code.
-  var minifiedCode = uglify.minify(code, uglifyOptions).code;
+  // Transpile, parse, and uglify/minify code.
+  var transpiledCode = Babel.transform(code, { presets: ['es2015'] }).code;
+  var minifiedCode = uglify.minify(transpiledCode, uglifyOptions).code;
 
   // If code uglifies down to nothing, stop processing.
-  if (!minifiedCode) {
+  if (!minifiedCode || minifiedCode === '"use strict";') {
     return;
   }
 

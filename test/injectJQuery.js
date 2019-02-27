@@ -9,8 +9,8 @@ exports.injectJQuery = function (test) {
   };
 
   var data = [
-    ['var test;', 'javascript:!function($){if($%26%26$.fn%26%26parseFloat($.fn.jquery)%3E=1.7);else{var%20s=document.createElement(%22script%22);s.src=%22//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js%22,s.onload=s.onreadystatechange=function(){var%20state=this.readyState;state%26%26%22loaded%22!==state%26%26%22complete%22!==state||jQuery.noConflict()}}document.getElementsByTagName(%22head%22)[0].appendChild(s)}(window.jQuery);'],
-    ['console.log("test");', 'javascript:!function($){var%20loadBookmarklet=function($){console.log(%22test%22)};if($%26%26$.fn%26%26parseFloat($.fn.jquery)%3E=1.7)loadBookmarklet();else{var%20s=document.createElement(%22script%22);s.src=%22//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js%22,s.onload=s.onreadystatechange=function(){var%20state=this.readyState;state%26%26%22loaded%22!==state%26%26%22complete%22!==state||loadBookmarklet(jQuery.noConflict())}}document.getElementsByTagName(%22head%22)[0].appendChild(s)}(window.jQuery);']
+    ['var test;', 'javascript:%22use%20strict%22;!function($){if($%26%26$.fn%26%26parseFloat($.fn.jquery)%3E=1.7);else{var%20s=document.createElement(%22script%22);s.src=%22//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js%22,s.onload=s.onreadystatechange=function(){var%20state=this.readyState;state%26%26%22loaded%22!==state%26%26%22complete%22!==state||jQuery.noConflict()}}document.getElementsByTagName(%22head%22)[0].appendChild(s)}(window.jQuery);'],
+    ['console.log("test");', 'javascript:%22use%20strict%22;!function($){var%20loadBookmarklet=function($){console.log(%22test%22)};if($%26%26$.fn%26%26parseFloat($.fn.jquery)%3E=1.7)loadBookmarklet();else{var%20s=document.createElement(%22script%22);s.src=%22//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js%22,s.onload=s.onreadystatechange=function(){var%20state=this.readyState;state%26%26%22loaded%22!==state%26%26%22complete%22!==state||loadBookmarklet(jQuery.noConflict())}}document.getElementsByTagName(%22head%22)[0].appendChild(s)}(window.jQuery);']
   ];
 
   data.forEach(function (datum) {
