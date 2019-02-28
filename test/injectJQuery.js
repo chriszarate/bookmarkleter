@@ -15,5 +15,11 @@ exports.injectJQuery = test => {
   data.forEach( input => test.ok( ! hasJQuery( input, { jQuery: false } ) ) );
   data.forEach( input => test.ok( ! hasJQuery( input ) ) );
 
+  // jquery: true (legacy option)
+  data.forEach( input => test.ok( hasJQuery( input, { jquery: true } ) ) );
+
+  // jquery: false (legacy option)
+  data.forEach( input => test.ok( ! hasJQuery( input, { jquery: false } ) ) );
+
   test.done();
 };
