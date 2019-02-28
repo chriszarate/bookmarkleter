@@ -1,12 +1,16 @@
 language: node_js
+
 node_js:
   - 6
   - 8
   - 10
+
 env:
   global:
-    - CODECLIMATE_REPO_TOKEN=29baf8715a6f03ccdd238c304743fffbf6a3987f6640be79a8803b305fcfd272
+    - CODECOV_TOKEN="abb0203e-ecc3-4b54-b0aa-9d8a1fee1289"
+
 before_script:
-  - npm install -g codeclimate-test-reporter
+  - npm install -g codecov
+
 after_script:
-  - codeclimate < coverage/lcov.info
+  - codecov

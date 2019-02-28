@@ -1,8 +1,7 @@
 # Bookmarkleter
 
 [![Build status][build-status]][travis-ci]
-[![Test coverage][test-coverage]][code-climate]
-[![Code climate][code-climate-gpa]][code-climate]
+[![Test coverage][test-coverage]][codecov]
 [![NPM version][npm-version]][fury-io]
 
 You have JavaScript. You need a [bookmarklet][bookmarklet]. This does that.
@@ -48,14 +47,13 @@ This is free software. It is released to the public domain without warranty.
 
 ### Thanks
 
-Thanks to [@jpillora][jpillora] for updates and contributions.
+Thanks to [@jpillora][jpillora] and [@alanhogan][alanhogan] for updates and contributions.
 
 
 [build-status]: https://secure.travis-ci.org/chriszarate/bookmarkleter.svg?branch=master
 [travis-ci]: http://travis-ci.org/chriszarate/bookmarkleter
-[test-coverage]: https://codeclimate.com/github/chriszarate/bookmarkleter/badges/coverage.svg
-[code-climate]: https://codeclimate.com/github/chriszarate/bookmarkleter
-[code-climate-gpa]: https://codeclimate.com/github/chriszarate/bookmarkleter/badges/gpa.svg
+[test-coverage]: https://codecov.io/gh/chriszarate/bookmarkleter/branch/master/graph/badge.svg
+[codecov]: https://codecov.io/gh/chriszarate/bookmarkleter
 [npm-version]: https://badge.fury.io/js/bookmarkleter.svg
 [fury-io]: http://badge.fury.io/js/bookmarkleter
 [bookmarklet]: http://en.wikipedia.org/wiki/Bookmarklet "Wikipedia entry on Bookmarklets"
@@ -64,3 +62,4 @@ Thanks to [@jpillora][jpillora] for updates and contributions.
 [babel-minify]: https://github.com/babel/minify
 [jquery]: http://jquery.com
 [jpillora]: https://github.com/jpillora
+[alanhogan]: https://github.com/alanhogan
