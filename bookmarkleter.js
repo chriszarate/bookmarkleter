@@ -34,7 +34,7 @@ const jquery = code => `void function ($) {
 const iife = code => `void function () {${code}}();`;
 const minify = code => babelMinify( code, { mangle: true } ).code;
 const prefix = code => `javascript:${code}`;
-const transpile = code => transform( code, { presets: [ 'es2015' ] } ).code.replace( /\n+/g, '' );
+const transpile = code => transform( code, { presets: [ 'es2015' ] } ).code;
 const urlencode = code => code.replace( new RegExp( specialCharacters.join( '|' ), 'g' ), encodeURIComponent );
 
 // Create a bookmarklet.
