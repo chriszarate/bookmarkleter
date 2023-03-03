@@ -16,6 +16,7 @@ app.controller('appController', ['$scope', function ($scope) {
   $scope.options = {
     urlencode: true,
     iife: true,
+    mangleVars: false,
     minify: true,
     transpile: false,
     jQuery: false

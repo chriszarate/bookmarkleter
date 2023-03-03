@@ -32,9 +32,9 @@ const jquery = code => `void function ($) {
 }(window.jQuery);`;
 
 const iife = code => `void function () {${code}}();`;
-const minify = code => babelMinify( code, { mangle: true } ).code;
+const minify = ( code, mangle ) => babelMinify( code, { mangle }, { comments: false } ).code;
 const prefix = code => `javascript:${code}`;
-const transpile = code => transform( code, { comments: false, filename: 'bookmarklet.js', presets: [ 'env' ], targets: '> 2%, not dead' } ).code.replace( /\n+/g, '' );
+const transpile = code => transform( code, { comments: false, filename: 'bookmarklet.js', presets: [ 'env' ], targets: '> 2%, not dead' } ).code
 const urlencode = code => code.replace( new RegExp( specialCharacters.join( '|' ), 'g' ), encodeURIComponent );
 
 // Create a bookmarklet.
@@ -46,24 +46,22 @@ module.exports = ( code, options = {} ) => {
     result = jquery( result );
   }
 
-  // Add IIFE wrapper?
-  if ( ( options.iife || options.anonymize ) && !options.jQuery ) {
-    result = iife( result );
-  }
-
   // Transpile?
   if ( options.transpile ) {
     result = transpile( result );
   }
 
-  // Minify?
-  if ( options.minify || options.mangleVars ) {
-    result = minify( result );
-  }
+  // Minify
+  result = minify( result, options.mangleVars || false );
 
   // If code minifies down to nothing, stop processing.
   if ( !result || result === '"use strict";' ) {
     return null;
+  }
+
+  // Add IIFE wrapper?
+  if ( ( options.iife || options.anonymize ) && !options.jQuery ) {
+    result = iife( result );
   }
 
   // URL-encode by default.
