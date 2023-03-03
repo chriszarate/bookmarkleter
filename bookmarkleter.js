@@ -31,7 +31,7 @@ const jquery = code => `void function ($) {
   document.getElementsByTagName('head')[0].appendChild(s);
 }(window.jQuery);`;
 
-const iife = code => `void function () {${code}}();`;
+const iife = code => `void function () {${code}\n}();`;
 const minify = code => babelMinify( code, { mangle: true } ).code;
 const prefix = code => `javascript:${code}`;
 const transpile = code => transform( code, { comments: false, filename: 'bookmarklet.js', presets: [ 'env' ], targets: '> 2%, not dead' } ).code.replace( /\n+/g, '' );
