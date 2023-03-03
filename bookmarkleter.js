@@ -1,6 +1,6 @@
 // Load dependencies.
 const babelMinify = require( 'babel-minify' );
-const { transform } = require( 'babel-standalone' );
+const { transform } = require( '@babel/standalone' );
 
 // URI-encode only a subset of characters. Most user agents are permissive with
 // non-reserved characters, so don't obfuscate more than we have to.
@@ -34,7 +34,7 @@ const jquery = code => `void function ($) {
 const iife = code => `void function () {${code}}();`;
 const minify = code => babelMinify( code, { mangle: true } ).code;
 const prefix = code => `javascript:${code}`;
-const transpile = code => transform( code, { presets: [ 'es2015' ] } ).code.replace( /\n+/g, '' );
+const transpile = code => transform( code, { comments: false, filename: 'bookmarklet.js', presets: [ 'env' ], targets: '> 2%, not dead' } ).code.replace( /\n+/g, '' );
 const urlencode = code => code.replace( new RegExp( specialCharacters.join( '|' ), 'g' ), encodeURIComponent );
 
 // Create a bookmarklet.
@@ -51,7 +51,7 @@ module.exports = ( code, options = {} ) => {
     result = iife( result );
   }
 
-  // Transpile to ES5?
+  // Transpile?
   if ( options.transpile ) {
     result = transpile( result );
   }

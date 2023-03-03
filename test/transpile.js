@@ -4,7 +4,7 @@ exports.transpile = test => {
   const data = [
     [
       'const getMessage = () => "Hello World";',
-      'javascript:%22use%20strict%22;var%20getMessage%20=%20function%20getMessage()%20{%20%20return%20%22Hello%20World%22;};',
+      'javascript:%22use%20strict%22;const%20getMessage%20=%20()%20=%3E%20%22Hello%20World%22;',
     ],
   ];
 

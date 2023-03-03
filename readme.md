@@ -36,7 +36,7 @@ All options are Boolean flags.
   * `minify` (default `false`): Minify using [babel-minify][babel-minify] to
     reduce the size of the bookmarklet.
 
-  * `transpile` (default `false`): Transpile to ES5 using [Babel][babel].
+  * `transpile` (default `false`): Transpile for browsers using [Babel][babel].
 
   * `jQuery` (default `false`): Make sure a modern version (>= 1.7) of
     [jQuery][jquery] is available for your code.
