@@ -4,19 +4,19 @@ exports.simple = test => {
   const data = [
     [
       'test',
-      'javascript:test',
+      'javascript:test;',
     ],
     [
       'var test',
-      'javascript:var%20test',
+      'javascript:var%20test;',
     ],
     [
       'var test = function(){var foo};',
-      'javascript:var%20test%20=%20function(){var%20foo};',
+      'javascript:var%20test=function(){};',
     ],
     [
       'var test = function(foo){foo++};',
-      'javascript:var%20test%20=%20function(foo){foo++};',
+      'javascript:var%20test=function(foo){foo++};',
     ],
     [
       'document.write("bookmarklet");',
@@ -28,7 +28,7 @@ exports.simple = test => {
     ],
     [
       'const getMessage = () => "Hello World";',
-      'javascript:const%20getMessage%20=%20()%20=%3E%20%22Hello%20World%22;',
+      'javascript:const%20getMessage=()=%3E%22Hello%20World%22;',
     ],
   ];
 

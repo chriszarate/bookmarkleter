@@ -33,19 +33,25 @@ All options are Boolean flags.
   * `iife` (default `false`): Wrap in an [IIFE][iife] (anonymizing function) to
     prevent exposing variables to the page on which the bookmarklet is running.
 
-  * `minify` (default `false`): Minify using [babel-minify][babel-minify] to
-    reduce the size of the bookmarklet.
+  * `mangleVars` (default `false`): Mangle variable names and other tokens to
+    further reduce size.
 
   * `transpile` (default `false`): Transpile for browsers using [Babel][babel].
 
   * `jQuery` (default `false`): Make sure a modern version (>= 1.7) of
     [jQuery][jquery] is available for your code.
 
-### License
+### Deprecated options
+
+  * `minify`: Code is always minified (with comments removed) using
+    [babel-minify][babel-minify]. Bookmarklets require minification to function
+    correctly. Use `mangleVars` option for additional compactness.
+
+## License
 
 This is free software. It is released to the public domain without warranty.
 
-### Thanks
+## Thanks
 
 Thanks to [@jpillora][jpillora] and [@alanhogan][alanhogan] for updates and contributions.
 

@@ -12,17 +12,10 @@ exports.mangleVars = test => {
     ],
   ];
 
-  // minify: true
-  data.forEach( ( [ input, output ] ) => test.equal( bookmarkleter( input, { minify: true } ), output ) );
-
-  // minify: false (default)
-  data.forEach( ( [ input, output ] ) => test.notEqual( bookmarkleter( input, { minify: false } ), output ) );
-  data.forEach( ( [ input, output ] ) => test.notEqual( bookmarkleter( input ), output ) );
-
-  // mangleVars: true (legacy option)
+  // mangleVars: true
   data.forEach( ( [ input, output ] ) => test.equal( bookmarkleter( input, { mangleVars: true } ), output ) );
 
-  // mangleVars: false (legacy option)
+  // mangleVars: false
   data.forEach( ( [ input, output ] ) => test.notEqual( bookmarkleter( input, { mangleVars: false } ), output ) );
 
   test.done();
