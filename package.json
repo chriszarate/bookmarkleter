@@ -7,7 +7,7 @@
     "node": ">=6"
   },
   "scripts": {
-    "build": "browserify browser-tool.js | minify > build/browser-tool.js",
+    "build": "browserify browser-tool.js -o build/browser-tool.js -p tinyify",
     "coverage": "istanbul cover nodeunit test",
     "test": "npm run coverage"
   },
@@ -22,13 +22,14 @@
   },
   "homepage": "https://github.com/chriszarate/bookmarkleter",
   "devDependencies": {
-    "angular": "^1.6.3",
-    "browserify": "^14.1.0",
-    "istanbul": "^0.4.5",
-    "nodeunit": "^0.11.0"
+    "angular": "1.8.3",
+    "browserify": "17.0.0",
+    "istanbul": "0.4.5",
+    "nodeunit": "0.11.3",
+    "tinyify": "4.0.0"
   },
   "dependencies": {
-    "babel-minify": "^0.5.0",
-    "babel-standalone": "^6.17.0"
+    "@babel/standalone": "7.21.2",
+    "babel-minify": "0.5.2"
   }
 }
