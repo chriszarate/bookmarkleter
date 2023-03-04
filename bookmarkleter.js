@@ -31,7 +31,7 @@ const jquery = code => `void function ($) {
   document.getElementsByTagName('head')[0].appendChild(s);
 }(window.jQuery);`;
 
-const iife = code => `void function () {${code}}();`;
+const iife = code => `void function () {${code}\n}();`;
 const minify = ( code, mangle ) => babelMinify( code, { mangle }, { comments: false } ).code;
 const prefix = code => `javascript:${code}`;
 const transpile = code => transform( code, { comments: false, filename: 'bookmarklet.js', presets: [ 'env' ], targets: '> 2%, not dead' } ).code
@@ -46,6 +46,11 @@ module.exports = ( code, options = {} ) => {
     result = jquery( result );
   }
 
+  // Add IIFE wrapper?
+  if ( ( options.iife || options.anonymize ) && !options.jQuery ) {
+    result = iife( result );
+  }
+
   // Transpile?
   if ( options.transpile ) {
     result = transpile( result );
@@ -57,11 +62,6 @@ module.exports = ( code, options = {} ) => {
   // If code minifies down to nothing, stop processing.
   if ( !result || result === '"use strict";' ) {
     return null;
-  }
-
-  // Add IIFE wrapper?
-  if ( ( options.iife || options.anonymize ) && !options.jQuery ) {
-    result = iife( result );
   }
 
   // URL-encode by default.
