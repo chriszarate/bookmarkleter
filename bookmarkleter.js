@@ -34,7 +34,7 @@ const jquery = code => `void function ($) {
 }(window.jQuery);`;
 
 const iife = code => `void function () {${code}\n}();`;
-const minify = ( code, mangle ) => babelMinify( code, { mangle }, { babel, comments: false } ).code;
+const minify = ( code, mangle ) => babelMinify( code, { mangle, deadcode: mangle }, { babel, comments: false } ).code;
 const prefix = code => `javascript:${code}`;
 const transpile = code => babel.transform( code, { comments: false, filename: 'bookmarklet.js', presets: [ 'env' ], targets: '> 2%, not dead' } ).code
 const urlencode = code => code.replace( new RegExp( specialCharacters.join( '|' ), 'g' ), encodeURIComponent );
