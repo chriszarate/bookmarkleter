@@ -12,7 +12,7 @@ exports.simple = test => {
     ],
     [
       'var test = function(){var foo};',
-      'javascript:var%20test=function(){};',
+      'javascript:var%20test=function(){var%20foo};',
     ],
     [
       'var test = function(foo){foo++};',

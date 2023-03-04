@@ -12,7 +12,7 @@ exports.returnNull = test => {
     '12345',
   ];
 
-  data.forEach( input => test.equal( bookmarkleter( input, { minify: true } ), null ) );
+  data.forEach( input => test.equal( bookmarkleter( input, { mangleVars: true } ), null ) );
 
   test.done();
 };
