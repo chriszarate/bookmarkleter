@@ -62,7 +62,7 @@ module.exports = ( code, options = {} ) => {
   result = minify( result, options.mangleVars || false );
 
   // If code minifies down to nothing, stop processing.
-  if ( '' === result.replace( /^"use strict";/, '').replace( /^void function\(\){}\(\);/, '' ) ) {
+  if ( '' === result.replace( /^"use strict";/, '').replace( /^void function\(\){}\(\);$/, '' ) ) {
     return null;
   }
 
