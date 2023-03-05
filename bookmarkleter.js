@@ -45,6 +45,7 @@ module.exports = ( code, options = {} ) => {
 
   // Add jQuery? (also adds IIFE wrapper).
   if ( options.jQuery || options.jquery ) {
+    options.jQuery = true;
     result = jquery( result );
   }
 
@@ -58,7 +59,7 @@ module.exports = ( code, options = {} ) => {
     result = transpile( result );
   }
 
-  // Minify
+  // Minify by default
   result = minify( result, options.mangleVars || false );
 
   // If code minifies down to nothing, stop processing.
